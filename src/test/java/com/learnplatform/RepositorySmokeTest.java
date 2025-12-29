@@ -1,6 +1,14 @@
 package com.learnplatform;
 
-import com.learnplatform.entity.*;
+import com.learnplatform.entity.Course;
+import com.learnplatform.entity.Enrollment;
+import com.learnplatform.entity.EnrollmentStatus;
+import com.learnplatform.entity.Lesson;
+import com.learnplatform.entity.Module;
+import com.learnplatform.entity.Tag;
+import com.learnplatform.entity.User;
+import com.learnplatform.entity.UserRole;
+import com.learnplatform.entity.Category;
 import com.learnplatform.repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,6 +70,6 @@ class RepositorySmokeTest {
         assertEquals(1, loaded.getModules().size());
         assertEquals(1, loaded.getModules().get(0).getLessons().size());
         assertEquals(Set.of("Java", "Hibernate"),
-                loaded.getTags().stream().map(Tag::getName).collect(java.util.stream.Collectors.toSet()));
+                loaded.getTags().stream().map(Tag::getName).collect(Collectors.toSet()));
     }
 }
